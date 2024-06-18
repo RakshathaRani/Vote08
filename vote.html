@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting Machine</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar bg-body-tertiary"  href="#" style="background-color: white; ">
+  <div class="container-fluid">
+    <a class="navbar-brand"  href="#" style="color: purple; font-weight: bold; font-size: 30px;">
+      <img src="Election.png" alt="Logo" style="height: 40px;">Vote
+    </a>
+    <button class="btn btn-outline-secondary" onclick="logout()">Logout</button>
+  </div>
+
+</nav>
+<style> body {
+            background-color: yellow;
+        } </style>
+
+    <div class="container mt-4" style="background-color: purple;">
+        <h1 class="text-center" style="color: yellow;">Your Vote Is For</h1>
+        <div id="candidates" class="row text-center mt-4">
+            <div class="col-md-3">
+                <div class="card mb-3">
+                    <img src="candidate1.jpg" class="card-img-top" alt="Candidate 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Candidate 1</h5>
+                        <button id="candidate1-btn" type="button" class="btn btn-primary" onclick="vote('candidate1')" style="background-color: purple; color: yellow;">Vote</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card mb-3">
+                    <img src="candidate2.jpg" class="card-img-top" alt="Candidate 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Candidate 2</h5>
+                        <button id="candidate2-btn" type="button" class="btn btn-primary" onclick="vote('candidate2')" style="background-color: purple; color: yellow;">Vote</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card mb-3">
+                    <img src="candidate3.jpg" class="card-img-top" alt="Candidate 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Candidate 3</h5>
+                        <button id="candidate3-btn" type="button" class="btn btn-primary" onclick="vote('candidate3')" style="background-color: purple; color: yellow;">Vote</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card mb-3">
+                    <img src="candidate4.jpg" class="card-img-top" alt="Candidate 4">
+                    <div class="card-body">
+                        <h5 class="card-title">Candidate 4</h5>
+                        <button id="candidate4-btn" type="button" class="btn btn-primary" onclick="vote('candidate4')" style="background-color: purple; color: yellow;">Vote</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+            
+
+        <div id="results" class="text-center mt-5">
+            <h2>Results</h2>
+            <p id="candidate1-votes">Candidate 1: 0 votes</p>
+            <p id="candidate2-votes">Candidate 2: 0 votes</p>
+            <p id="candidate3-votes">Candidate 3: 0 votes</p>
+            <p id="candidate4-votes">Candidate 4: 0 votes</p>
+        </div>
+    </div>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        let votes = {
+            candidate1: 0,
+            candidate2: 0,
+            candidate3: 0,
+            candidate4: 0
+        };
+
+       function vote(candidate) {
+    /// Disable all candidate buttons after voting
+    document.getElementById('candidate1-btn').disabled = true;
+    document.getElementById('candidate2-btn').disabled = true;
+    document.getElementById('candidate3-btn').disabled = true;
+    document.getElementById('candidate4-btn').disabled = true;
+
+            // Increment the vote count for the selected candidate
+    votes[candidate]++;
+    updateVoteCount(candidate);
+}
+        function updateVoteCount(candidate) {
+            // Update the vote counts displayed on the page
+            document.getElementById('candidate1-votes').innerText = `Candidate 1: ${votes.candidate1} votes`;
+            document.getElementById('candidate2-votes').innerText = `Candidate 2: ${votes.candidate2} votes`;
+            document.getElementById('candidate3-votes').innerText = `Candidate 3: ${votes.candidate3} votes`;
+            document.getElementById('candidate4-votes').innerText = `Candidate 4: ${votes.candidate4} votes`;
+
+          
+}
+function logout() {
+            window.location.href = 'thanku.html';
+        }
+
+    </script>
+</body>
+</html>

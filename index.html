@@ -1,0 +1,64 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar bg-body-tertiary"  href="#" style="background-color: white; ">
+        <div class="container-fluid">
+            <a class="navbar-brand"  href="#" style="color: purple; font-weight: bold; font-size: 30px;">
+                <img src="Election.png" alt="Logo" style="height: 30px;">
+                Election
+            </a>
+        </div>
+    </nav>
+
+    <div class="container mt-4" style="background-color: purple;">
+        <h1 class="text-center" style="color: yellow;">Login</h1>
+        <form id="login-form">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-warning" >Login</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Validate username
+            if (username.length < 5 || username.includes(' ')) {
+                alert('Username should be above 5 letters with no space');
+                return;
+            }
+
+            // Validate password
+            const hasCapitalLetter = /[A-Z]/.test(password);
+            const hasSpecialCharacter = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password);
+            const hasNumber = /\d/.test(password);
+            const hasSmallLetters = /[a-z]/.test(password);
+
+            if (!(hasCapitalLetter && hasSpecialCharacter && hasNumber && hasSmallLetters)) {
+                alert('Password should include only 1 capital letter, only 1 special character, only 1 number, and all other letters should be in small case');
+                return;
+            }
+
+            // If all validations pass, redirect to vote.html
+            window.location.href = 'vote.html';
+        });
+    </script>
+</body>
+</html>
